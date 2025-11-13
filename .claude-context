@@ -1,0 +1,22 @@
+Claude Code Context Information
+================================
+
+Working directory: /Users/shammishailaj/dev/stroganoff
+Is directory a git repo: Yes
+Platform: darwin
+OS Version: Darwin 25.0.0
+Today's date: 2025-11-13
+Model: claude-haiku-4-5-20251001
+
+Git Status:
+-----------
+Current branch: main
+Status: clean (no uncommitted changes)
+
+Recent commits:
+- 9f1fb39 Add MIT license
+- 5d05f96 Add GitHub template repository readiness document
+- 5c4095d Add GitHub template repository configuration
+- efef19f Initial GOCR project commit
+
+Project: GOCR (appears to be an OCR-related project)
