@@ -23,7 +23,7 @@ This document summarizes all the components that have been set up for the stroga
 - ✅ VERSION file with semantic versioning
 - ✅ Version package with build-time injection via ldflags
 - ✅ Hard-coded versions in executable
-- ✅ Accessible via `gocr version` command and programmatic access
+- ✅ Accessible via `stroganoff version` command and programmatic access
 - ✅ Proper SemVer format (MAJOR.MINOR.PATCH)
 
 **Files:**
@@ -454,7 +454,7 @@ launchctl start stroganoff       # macOS
 1. **Development**
    ```bash
    make build
-   ./dist/gocr web --theme dark
+   ./dist/stroganoff web --theme dark
    ```
 
 2. **Testing**
@@ -478,8 +478,8 @@ launchctl start stroganoff       # macOS
 
 5. **Upgrade from Release**
    ```bash
-   gocr upgrade
-   gocr upgrade --version v1.0.0
+   stroganoff upgrade
+   stroganoff upgrade --version v1.0.0
    ```
 
 ## 📝 Notes

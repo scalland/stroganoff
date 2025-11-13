@@ -62,13 +62,13 @@ stroganoff web --config /path/to/config.yaml
 #### Version
 Display version, commit, and build date information:
 ```bash
-gocr version
+stroganoff version
 ```
 
 #### Web Server
 Start the HTTP server with web interface and API:
 ```bash
-gocr web [flags]
+stroganoff web [flags]
 ```
 
 Flags:
@@ -101,13 +101,13 @@ stroganoff install
 ```
 
 Flags:
-- `--service`: Service name (default: gocr)
+- `--service`: Service name (default: stroganoff)
 - `--user`: User to run service as (Linux only)
 
 #### Config
 Manage configuration:
 ```bash
-gocr config show
+stroganoff config show
 ```
 
 ## Configuration
@@ -225,7 +225,7 @@ Releases are automatically created via GitHub Actions when pushing to main:
 ### Project Structure
 
 ```
-gocr/
+stroganoff/
 ├── cmd/stroganoff/
 │   ├── main.go
 │   └── commands/
@@ -282,9 +282,9 @@ The application includes built-in monitoring capabilities:
 ## Troubleshooting
 
 ### Service fails to start
-1. Check logs: `journalctl -u gocr -f` (Linux)
+1. Check logs: `journalctl -u stroganoff -f` (Linux)
 2. Verify permissions: `sudo -l`
-3. Check configuration: `gocr config show`
+3. Check configuration: `stroganoff config show`
 
 ### Port already in use
 ```bash
@@ -292,7 +292,7 @@ The application includes built-in monitoring capabilities:
 lsof -i :8080
 
 # Use different port
-gocr web --port 8081
+stroganoff web --port 8081
 ```
 
 ### Hot-reload not working

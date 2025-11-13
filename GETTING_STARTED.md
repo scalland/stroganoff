@@ -101,7 +101,7 @@ api:
 
 **Switch theme:**
 ```bash
-./dist/gocr web --theme dark
+./dist/stroganoff web --theme dark
 ```
 
 ## Testing
@@ -160,7 +160,7 @@ make test
 
 ```bash
 make build
-./dist/gocr web
+./dist/stroganoff web
 ```
 
 ## Version Management
@@ -313,7 +313,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions covering
 
 **Solution:** Use different port
 ```bash
-./dist/gocr web --port 8081
+./dist/stroganoff web --port 8081
 ```
 
 ### Configuration file not found
@@ -341,7 +341,7 @@ make test
 
 **Solution:** Make binary executable
 ```bash
-chmod +x dist/gocr
+chmod +x dist/stroganoff
 ```
 
 ## File Structure Explained

@@ -1,11 +1,11 @@
-# GOCR - Run Instructions
+# stroganoff - Run Instructions
 
-Successfully built and tested GOCR application!
+Successfully built and tested stroganoff application!
 
 ## Build Completed ✅
 
 ```
-Binary: dist/gocr
+Binary: dist/stroganoff
 Size: 18MB
 Status: Ready to run
 ```
@@ -15,16 +15,16 @@ Status: Ready to run
 ### 1. Start the Web Server
 
 ```bash
-cd /Users/shammishailaj/dev/gocr
+cd /Users/shammishailaj/dev/stroganoff
 
 # Copy config if needed
 cp config.example.yaml config.yaml
 
 # Run on default port (8080)
-./dist/gocr web
+./dist/stroganoff web
 
 # Or run on custom port
-./dist/gocr web --port 8081
+./dist/stroganoff web --port 8081
 ```
 
 ### 2. Test Endpoints
@@ -50,24 +50,24 @@ curl http://localhost:8080/api/heartbeat
 
 ```bash
 # Show version
-./dist/gocr version
+./dist/stroganoff version
 
 # Show help
-./dist/gocr --help
+./dist/stroganoff --help
 
 # Show configuration
-./dist/gocr config show
+./dist/stroganoff config show
 
 # Try upgrade (will fail gracefully without repo)
-./dist/gocr upgrade --version latest
+./dist/stroganoff upgrade --version latest
 ```
 
 ## Verified Working Features ✅
 
 | Feature | Status | Command/Endpoint |
 |---------|--------|------------------|
-| **Version Management** | ✅ Working | `gocr version` |
-| **Web Server** | ✅ Working | `gocr web` |
+| **Version Management** | ✅ Working | `stroganoff version` |
+| **Web Server** | ✅ Working | `stroganoff web` |
 | **Health Check** | ✅ Working | `GET /health` |
 | **Heartbeat API** | ✅ Working | `GET /api/heartbeat` |
 | **Configuration** | ✅ Working | `config.yaml` loaded |
@@ -87,8 +87,8 @@ Platform: macOS (darwin/arm64)
 ## Project Contents
 
 ```
-gocr/
-├── dist/gocr              # Compiled binary (18MB)
+stroganoff/
+├── dist/stroganoff              # Compiled binary (18MB)
 ├── cmd/stroganoff/              # CLI commands (7 files)
 ├── internal/              # Core packages (9 files)
 ├── pkg/                   # Public packages (9 files)
@@ -105,12 +105,12 @@ gocr/
 
 ### Start Web Server
 ```bash
-./dist/gocr web
+./dist/stroganoff web
 ```
 
 ### Show Version
 ```bash
-./dist/gocr version
+./dist/stroganoff version
 ```
 
 ### Test Health
@@ -130,9 +130,9 @@ make build-all
 
 ### Install as Service (Linux/macOS)
 ```bash
-sudo ./dist/gocr install
-sudo systemctl start gocr  # Linux
-launchctl start gocr       # macOS
+sudo ./dist/stroganoff install
+sudo systemctl start stroganoff  # Linux
+launchctl start stroganoff       # macOS
 ```
 
 ## Documentation
@@ -193,17 +193,17 @@ launchctl start gocr       # macOS
 
 **Port already in use:**
 ```bash
-./dist/gocr web --port 8081
+./dist/stroganoff web --port 8081
 ```
 
 **Permission denied (Linux/macOS):**
 ```bash
-chmod +x dist/gocr
+chmod +x dist/stroganoff
 ```
 
 **Configuration issues:**
 ```bash
-./dist/gocr config show  # Display current config
+./dist/stroganoff config show  # Display current config
 ```
 
 ## System Requirements
@@ -222,6 +222,6 @@ All documentation is in the project directory:
 
 ---
 
-**Your GOCR application is ready to use! 🚀**
+**Your stroganoff application is ready to use! 🚀**
 
 For detailed information, visit the documentation files.

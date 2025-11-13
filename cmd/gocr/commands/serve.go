@@ -22,7 +22,7 @@ var (
 var serveCmd = &cobra.Command{
 	Use:   "serve",
 	Short: "Start the server",
-	Long:  "Start the GOCR server with HTTP API and web interface",
+	Long:  "Start the stroganoff server with HTTP API and web interface",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return startServer()
 	},
@@ -75,7 +75,7 @@ func startServer() error {
 	defer appMonitor.Stop()
 
 	// Create and start server
-	fmt.Printf("Starting GOCR server on %s:%d\n", cfg.Server.Host, cfg.Server.Port)
+	fmt.Printf("Starting stroganoff server on %s:%d\n", cfg.Server.Host, cfg.Server.Port)
 	fmt.Printf("Theme: %s\n", cfg.Server.Theme)
 
 	server := web.NewServer()

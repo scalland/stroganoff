@@ -5,9 +5,9 @@ import (
 )
 
 var RootCmd = &cobra.Command{
-	Use:   "gocr",
+	Use:   "stroganoff",
 	Short: "A professional Go application with advanced features",
-	Long: `gocr is a feature-rich Go CLI application with support for
+	Long: `stroganoff is a feature-rich Go CLI application with support for
 configuration management, web interfaces, API endpoints, and more.`,
 }
 

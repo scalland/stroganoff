@@ -64,9 +64,9 @@ jobs:
           mkdir -p dist
 
           if [ "${{ matrix.goos }}" = "windows" ]; then
-            go build -ldflags="$LDFLAGS" -o dist/gocr-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}.exe ./cmd/gocr
+            go build -ldflags="$LDFLAGS" -o dist/${VERSION}-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}.exe ./cmd/stroganoff
           else
-            go build -ldflags="$LDFLAGS" -o dist/gocr-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }} ./cmd/gocr
+            go build -ldflags="$LDFLAGS" -o dist/${VERSION}-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }} ./cmd/stroganoff
           fi
 
       - name: Create artifact
@@ -75,19 +75,19 @@ jobs:
           cd dist
 
           if [ "${{ matrix.goos }}" = "windows" ]; then
-            BINARY="gocr-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}.exe"
+            BINARY="${VERSION}-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}.exe"
           else
-            BINARY="gocr-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}"
+            BINARY="${VERSION}-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}"
           fi
 
-          tar czf "gocr-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}.tar.gz" "$BINARY"
+          tar czf "${VERSION}-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}.tar.gz" "$BINARY"
           cd ..
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: gocr-${{ matrix.goos }}-${{ matrix.goarch }}
-          path: dist/gocr-*
+          name: ${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: dist/${VERSION}-*
           retention-days: 1
 
   release:
@@ -125,7 +125,7 @@ jobs:
         with:
           tag_name: ${{ steps.release.outputs.tag }}
           name: ${{ steps.release.outputs.name }}
-          files: dist/gocr-*
+          files: dist/${VERSION}-*
           draft: false
           prerelease: false
           generate_release_notes: true

@@ -22,7 +22,7 @@ var (
 var upgradeCmd = &cobra.Command{
 	Use:   "upgrade",
 	Short: "Upgrade to a new version",
-	Long: `Download and install a new version of gocr from Github releases.
+	Long: `Download and install a new version of stroganoff from Github releases.
 Can upgrade to a specific version or the latest available version.
 Supports both public and private repositories with authentication token.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
@@ -45,9 +45,9 @@ func performUpgrade() error {
 	var err error
 
 	if upgradeVersion == "latest" {
-		releaseInfo, err = client.GetLatestRelease("yourusername", "gocr")
+		releaseInfo, err = client.GetLatestRelease("yourusername", "stroganoff")
 	} else {
-		releaseInfo, err = client.GetRelease("yourusername", "gocr", upgradeVersion)
+		releaseInfo, err = client.GetRelease("yourusername", "stroganoff", upgradeVersion)
 	}
 
 	if err != nil {
@@ -65,9 +65,9 @@ func performUpgrade() error {
 	goos := runtime.GOOS
 	goarch := runtime.GOARCH
 
-	assetName := fmt.Sprintf("gocr-*-%s-%s", goos, goarch)
+	assetName := fmt.Sprintf("stroganoff-*-%s-%s", goos, goarch)
 	if goos == "windows" {
-		assetName = fmt.Sprintf("gocr-*-%s-%s.exe", goos, goarch)
+		assetName = fmt.Sprintf("stroganoff-*-%s-%s.exe", goos, goarch)
 	}
 
 	var downloadURL string
@@ -141,7 +141,7 @@ func downloadBinary(url, token string) (string, error) {
 		return "", fmt.Errorf("download failed with status %d", resp.StatusCode)
 	}
 
-	tmpFile, err := os.CreateTemp("", "gocr-*")
+	tmpFile, err := os.CreateTemp("", "stroganoff-*")
 	if err != nil {
 		return "", err
 	}

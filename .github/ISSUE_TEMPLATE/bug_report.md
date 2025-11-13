@@ -26,7 +26,7 @@ What actually happened.
 - OS: [e.g. macOS, Linux, Windows]
 - Architecture: [e.g. arm64, amd64]
 - Go Version: [e.g. 1.21]
-- GOCR Version: [e.g. 0.1.0]
+- stroganoff Version: [e.g. 0.1.0]
 
 ## Configuration (if applicable)
 ```yaml

@@ -3,7 +3,7 @@
 
 # Repository Settings
 repository:
-  name: gocr
+  name: stroganoff
   description: "🚀 Production-ready Go CLI application template with Cobra, Gin, YAML config, authentication, rate limiting, and comprehensive documentation."
 
   # GitHub template repository

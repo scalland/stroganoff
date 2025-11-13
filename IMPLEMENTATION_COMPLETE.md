@@ -26,7 +26,7 @@ A comprehensive, production-ready Go CLI application has been successfully creat
 #### 3. Version Management
 - ✅ VERSION file with semantic versioning
 - ✅ Hard-coded version in binary at compile time
-- ✅ Version accessible via `gocr version` command
+- ✅ Version accessible via `stroganoff version` command
 - ✅ Version accessible programmatically
 - ✅ Interactive version bumping (patch/minor/major)
 - ✅ Build information (commit hash, date)
@@ -162,7 +162,7 @@ A comprehensive, production-ready Go CLI application has been successfully creat
 ## Directory Structure
 
 ```
-gocr/ (Complete 5-level deep structure)
+stroganoff/ (Complete 5-level deep structure)
 ├── .github/workflows/          # GitHub Actions
 │   └── build.yml              # CI/CD pipeline
 ├── cmd/stroganoff/                  # CLI application
@@ -411,7 +411,7 @@ make docker-build      # Docker image
    ```bash
    cp config.example.yaml config.yaml
    make build
-   ./dist/gocr web
+   ./dist/stroganoff web
    ```
 
 2. **Customization**
@@ -543,12 +543,12 @@ make lint                    # Check code quality
 make fmt                     # Format code
 
 # Running
-./dist/gocr version          # Show version
-./dist/gocr web              # Start web server
-./dist/gocr upgrade          # Check for updates
+./dist/stroganoff version          # Show version
+./dist/stroganoff web              # Start web server
+./dist/stroganoff upgrade          # Check for updates
 
 # Deployment
-sudo ./dist/gocr install     # Install as service
+sudo ./dist/stroganoff install     # Install as service
 make docker-build            # Build Docker image
 
 # Maintenance

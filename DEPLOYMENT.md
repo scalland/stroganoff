@@ -98,7 +98,7 @@ WantedBy=multi-user.target
 make build
 
 # Get the binary path
-BINARY_PATH=$(pwd)/dist/gocr
+BINARY_PATH=$(pwd)/dist/stroganoff
 
 # Install as service
 sudo $BINARY_PATH install
@@ -108,16 +108,16 @@ sudo $BINARY_PATH install
 
 ```bash
 # Start the service
-launchctl start gocr
+launchctl start stroganoff
 
 # Stop the service
-launchctl stop gocr
+launchctl stop stroganoff
 
 # View logs
-tail -f /var/log/gocr.log
+tail -f /var/log/stroganoff.log
 
 # Remove service
-launchctl unload ~/Library/LaunchAgents/com.gocr.plist
+launchctl unload ~/Library/LaunchAgents/com.stroganoff.plist
 ```
 
 ## Windows Service Deployment
@@ -128,26 +128,26 @@ Open Command Prompt as Administrator:
 
 ```cmd
 # Build the binary
-go build -o gocr.exe ./cmd/stroganoff
+go build -o stroganoff.exe ./cmd/stroganoff
 
 # Install as service
-gocr.exe install
+stroganoff.exe install
 
 # Or specify custom service name
-gocr.exe install --service MyApp
+stroganoff.exe install --service MyApp
 ```
 
 ### Service Management
 
 ```cmd
 # Start the service
-net start gocr
+net start stroganoff
 
 # Stop the service
-net stop gocr
+net stop stroganoff
 
 # View logs - Use Windows Event Viewer
-# Services: Look for "gocr"
+# Services: Look for "stroganoff"
 ```
 
 ## Docker Deployment
@@ -156,28 +156,28 @@ net stop gocr
 
 ```bash
 # Build the Docker image
-docker build -t gocr:latest .
+docker build -t stroganoff:latest .
 
 # Or with a tag
-docker build -t myregistry/gocr:1.0.0 .
+docker build -t myregistry/stroganoff:1.0.0 .
 ```
 
 ### Running with Docker
 
 ```bash
 # Run with default configuration
-docker run -p 8080:8080 gocr:latest
+docker run -p 8080:8080 stroganoff:latest
 
 # Run with custom config
 docker run -p 8080:8080 \
   -v $(pwd)/config.yaml:/app/config.yaml \
-  gocr:latest
+  stroganoff:latest
 
 # Run with environment variables
 docker run -p 8080:8080 \
-  -e GOCR_THEME=dark \
-  -e GOCR_LOG_LEVEL=debug \
-  gocr:latest
+  -e STROGANOFF_THEME=dark \
+  -e STROGANOFF_LOG_LEVEL=debug \
+  stroganoff:latest
 ```
 
 ### Docker Compose
@@ -187,7 +187,7 @@ docker run -p 8080:8080 \
 docker-compose up -d
 
 # View logs
-docker-compose logs -f gocr
+docker-compose logs -f stroganoff
 
 # Stop services
 docker-compose down
@@ -201,26 +201,26 @@ Example deployment manifest:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gocr
+  name: stroganoff
   labels:
-    app: gocr
+    app: stroganoff
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: gocr
+      app: stroganoff
   template:
     metadata:
       labels:
-        app: gocr
+        app: stroganoff
     spec:
       containers:
-      - name: gocr
-        image: gocr:latest
+      - name: stroganoff
+        image: stroganoff:latest
         ports:
         - containerPort: 8080
         env:
-        - name: GOCR_THEME
+        - name: STROGANOFF_THEME
           value: "dark"
         volumeMounts:
         - name: config
@@ -241,15 +241,15 @@ spec:
       volumes:
       - name: config
         configMap:
-          name: gocr-config
+          name: stroganoff-config
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: gocr
+  name: stroganoff
 spec:
   selector:
-    app: gocr
+    app: stroganoff
   ports:
   - protocol: TCP
     port: 80
@@ -259,7 +259,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: gocr-config
+  name: stroganoff-config
 data:
   config.yaml: |
     server:
@@ -277,19 +277,19 @@ data:
 
 ```bash
 # Create namespace
-kubectl create namespace gocr
+kubectl create namespace stroganoff
 
 # Create the deployment
-kubectl apply -f deployment.yaml -n gocr
+kubectl apply -f deployment.yaml -n stroganoff
 
 # Check deployment status
-kubectl get deployment -n gocr
+kubectl get deployment -n stroganoff
 
 # View logs
-kubectl logs -f deployment/gocr -n gocr
+kubectl logs -f deployment/stroganoff -n stroganoff
 
 # Port forward
-kubectl port-forward svc/gocr 8080:80 -n gocr
+kubectl port-forward svc/stroganoff 8080:80 -n stroganoff
 ```
 
 ## Production Deployment Checklist
@@ -331,7 +331,7 @@ kubectl port-forward svc/gocr 8080:80 -n gocr
 ### Nginx
 
 ```nginx
-upstream gocr {
+upstream stroganoff {
     server localhost:8080;
 }
 
@@ -356,7 +356,7 @@ server {
     add_header X-Content-Type-Options "nosniff" always;
 
     location / {
-        proxy_pass http://gocr;
+        proxy_pass http://stroganoff;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -393,8 +393,8 @@ server {
     ProxyPassReverse / http://localhost:8080/
 
     # Logging
-    ErrorLog ${APACHE_LOG_DIR}/gocr-error.log
-    CustomLog ${APACHE_LOG_DIR}/gocr-access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/stroganoff-error.log
+    CustomLog ${APACHE_LOG_DIR}/stroganoff-access.log combined
 </VirtualHost>
 ```
 
@@ -402,10 +402,10 @@ server {
 
 ### Log Rotation (Logrotate)
 
-Create `/etc/logrotate.d/gocr`:
+Create `/etc/logrotate.d/stroganoff`:
 
 ```
-/var/log/gocr*.log {
+/var/log/stroganoff*.log {
     daily
     missingok
     rotate 14
@@ -415,7 +415,7 @@ Create `/etc/logrotate.d/gocr`:
     create 0640 root root
     sharedscripts
     postrotate
-        systemctl reload gocr > /dev/null 2>&1 || true
+        systemctl reload stroganoff > /dev/null 2>&1 || true
     endscript
 }
 ```
@@ -446,18 +446,18 @@ fi
 ### Service Won't Start
 
 1. Check logs:
-   - Linux: `sudo journalctl -u gocr -n 50`
-   - macOS: `cat /var/log/gocr.log`
+   - Linux: `sudo journalctl -u stroganoff -n 50`
+   - macOS: `cat /var/log/stroganoff.log`
    - Windows: Windows Event Viewer
 
 2. Verify configuration:
    ```bash
-   gocr config show
+   stroganoff config show
    ```
 
 3. Test manually:
    ```bash
-   ./dist/gocr web
+   ./dist/stroganoff web
    ```
 
 ### Port Already in Use
@@ -470,7 +470,7 @@ lsof -i :8080
 kill -9 <PID>
 
 # Or use a different port
-gocr web --port 8081
+stroganoff web --port 8081
 ```
 
 ### High CPU/Memory Usage
@@ -493,7 +493,7 @@ gocr web --port 8081
 cp config.yaml config.yaml.backup.$(date +%s)
 
 # Backup entire deployment
-tar czf gocr-backup.tar.gz config.yaml logs/
+tar czf stroganoff-backup.tar.gz config.yaml logs/
 ```
 
 ### Recovery
@@ -503,7 +503,7 @@ tar czf gocr-backup.tar.gz config.yaml logs/
 cp config.yaml.backup.<timestamp> config.yaml
 
 # Restart service
-sudo systemctl restart gocr
+sudo systemctl restart stroganoff
 ```
 
 ## Updates and Upgrades
@@ -512,13 +512,13 @@ sudo systemctl restart gocr
 
 ```bash
 # Upgrade to latest version
-gocr upgrade
+stroganoff upgrade
 
 # Upgrade to specific version
-gocr upgrade --version v1.2.3
+stroganoff upgrade --version v1.2.3
 
 # For private repositories
-gocr upgrade --token <github-token>
+stroganoff upgrade --token <github-token>
 ```
 
 ### Manual Upgrade

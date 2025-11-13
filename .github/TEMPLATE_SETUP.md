@@ -1,6 +1,6 @@
 # GitHub Template Repository Setup Guide
 
-This guide explains how to set up GOCR as a GitHub template repository.
+This guide explains how to set up stroganoff as a GitHub template repository.
 
 ## What is a Template Repository?
 
@@ -198,7 +198,7 @@ Users will see the **"Use this template"** button and can:
    cd my-app
 
    # Update module name in go.mod
-   sed -i 's/yourusername\/gocr/yourname\/my-app/g' go.mod
+   sed -i 's/yourusername\/stroganoff/yourname\/my-app/g' go.mod
 
    # Build
    make build

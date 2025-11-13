@@ -1,4 +1,4 @@
-# 🎯 GOCR Template Repository
+# 🎯 stroganoff Template Repository
 
 Welcome! This is a **production-ready GitHub template repository** for building professional Go CLI applications.
 
@@ -25,7 +25,7 @@ A template repository is a repository that can be used as a base for new project
 
 ### Option 1: Use GitHub's Template Feature (Recommended)
 
-1. Go to the [GOCR repository](https://github.com/yourusername/stroganoff)
+1. Go to the [stroganoff repository](https://github.com/yourusername/stroganoff)
 2. Click the green **"Use this template"** button
 3. Choose a new repository name
 4. Create your new repository
@@ -37,13 +37,13 @@ git clone https://github.com/yourusername/stroganoff.git my-app
 cd my-app
 
 # Update module name
-sed -i '' 's/yourusername\/gocr/yourusername\/my-app/g' go.mod cmd/stroganoff/commands/*.go
+sed -i '' 's/yourusername\/stroganoff/yourusername\/my-app/g' go.mod cmd/stroganoff/commands/*.go
 
 # Remove template files if desired
 rm TEMPLATE.md template.properties
 
 git add -A
-git commit -m "Initialize from GOCR template"
+git commit -m "Initialize from stroganoff template"
 ```
 
 ## Quick Start After Using Template
@@ -53,7 +53,7 @@ git commit -m "Initialize from GOCR template"
 vi go.mod  # Change module path
 
 # Update imports in code files
-sed -i '' 's/yourusername\/gocr/your-username\/your-app/g' **/*.go
+sed -i '' 's/yourusername\/stroganoff/your-username\/your-app/g' **/*.go
 
 # Build
 make build

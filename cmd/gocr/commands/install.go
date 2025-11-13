@@ -17,8 +17,8 @@ var (
 
 var installCmd = &cobra.Command{
 	Use:   "install",
-	Short: "Install gocr as a service",
-	Long: `Install the gocr application as a system service.
+	Short: "Install stroganoff as a service",
+	Long: `Install the stroganoff application as a system service.
 Supports systemd (Linux), launchd (macOS), and Windows Service.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return performInstall()
@@ -26,7 +26,7 @@ Supports systemd (Linux), launchd (macOS), and Windows Service.`,
 }
 
 func init() {
-	installCmd.Flags().StringVar(&installService, "service", "gocr", "Service name")
+	installCmd.Flags().StringVar(&installService, "service", "stroganoff", "Service name")
 	installCmd.Flags().StringVar(&installUser, "user", "", "User to run service as (Linux only)")
 }
 
