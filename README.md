@@ -2,6 +2,8 @@
 
 A comprehensive Go CLI application with advanced features including service installation, configuration management, web interface, API endpoints, monitoring, and automatic updates.
 
+**Also serves as a production-ready template for creating new Go CLI projects.**
+
 ## Features
 
 - **Multi-OS/Architecture Support**: Build for Linux, macOS, and Windows across multiple architectures
@@ -40,6 +42,36 @@ make test
 # Generate coverage report
 make test-coverage
 ```
+
+### Using as a Template Generator
+
+Stroganoff can generate new Go CLI projects with all the features pre-configured:
+
+```bash
+# Build the generator
+make build-generator
+
+# Generate a new project
+./dist/stroganoff-generate \
+  -name myapp \
+  -module github.com/username/myapp \
+  -app MyApp \
+  -output ./myapp
+
+# Set up the new project
+cd myapp
+go mod tidy
+make build
+./dist/myapp --help
+```
+
+**Parameters:**
+- `-name`: Project name (lowercase, e.g., `myapp`)
+- `-module`: Go module path (e.g., `github.com/username/myapp`)
+- `-app`: Application display name (e.g., `MyApp`)
+- `-output`: Output directory path
+
+For detailed documentation on the template generator, see [TEMPLATE_GENERATOR.md](TEMPLATE_GENERATOR.md).
 
 ### Running the Web Server
 
@@ -226,32 +258,35 @@ Releases are automatically created via GitHub Actions when pushing to main:
 
 ```
 stroganoff/
-├── cmd/stroganoff/
-│   ├── main.go
-│   └── commands/
-│       ├── root.go
-│       ├── version.go
-│       ├── web.go
-│       ├── upgrade.go
-│       ├── install.go
-│       └── config.go
+├── cmd/
+│   ├── stroganoff/
+│   │   ├── main.go
+│   │   └── commands/
+│   │       ├── root.go
+│   │       ├── version.go
+│   │       ├── serve.go
+│   │       ├── upgrade.go
+│   │       ├── install.go
+│   │       └── config.go
+│   └── generate/
+│       └── main.go              # Template generator tool
 ├── internal/
-│   ├── config/
-│   ├── web/
-│   ├── monitor/
-│   ├── upgrade/
-│   ├── install/
-│   └── api/
+│   ├── config/                  # Configuration management
+│   ├── web/                     # Web server and theme handling
+│   ├── monitor/                 # Monitoring and health checks
+│   ├── upgrade/                 # Auto-update functionality
+│   ├── install/                 # Service installation
+│   └── generator/               # Project template generator
 ├── pkg/
-│   ├── version/
-│   ├── auth/
-│   └── ratelimit/
+│   ├── version/                 # Version management
+│   ├── auth/                    # Authentication and tokens
+│   └── ratelimit/               # Rate limiting
 ├── web/
 │   └── themes/
-│       ├── default/
-│       └── dark/
+│       ├── default/             # Light theme
+│       └── dark/                # Dark theme
 └── .github/
-    └── workflows/
+    └── workflows/               # GitHub Actions CI/CD
 ```
 
 ### Code Style

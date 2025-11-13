@@ -1,4 +1,4 @@
-.PHONY: help build run serve test clean version-bump install-deps lint docker-build docker-run fmt
+.PHONY: help build build-generator run serve test clean version-bump install-deps lint docker-build docker-run fmt
 
 # Variables
 VERSION_FILE := VERSION
@@ -18,6 +18,7 @@ help:
 	@echo "Targets:"
 	@echo "  build              Build binary for current OS/ARCH"
 	@echo "  build-all          Build binaries for all OS/ARCH combinations"
+	@echo "  build-generator    Build the project generator tool"
 	@echo "  run                Run the application"
 	@echo "  serve              Build and start the server (port 8080)"
 	@echo "  test               Run tests"
@@ -39,6 +40,10 @@ install-deps:
 build: install-deps
 	@echo "Building $(BINARY_NAME) v$(VERSION) for $(GOOS)/$(GOARCH)..."
 	go build $(LDFLAGS) -o $(DIST_DIR)/$(BINARY_NAME) ./cmd/stroganoff
+
+build-generator: install-deps
+	@echo "Building project generator tool..."
+	go build -o $(DIST_DIR)/stroganoff-generate ./cmd/generate
 
 build-all: clean install-deps
 	@echo "Building $(BINARY_NAME) v$(VERSION) for all OS/ARCH combinations..."
