@@ -2,12 +2,12 @@
 
 # Variables
 VERSION_FILE := VERSION
-BINARY_NAME := gocr
+BINARY_NAME := stroganoff
 DIST_DIR := dist
 GIT_COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 BUILD_DATE := $(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
 VERSION := $(shell cat $(VERSION_FILE))
-LDFLAGS := -ldflags "-X github.com/yourusername/gocr/pkg/version.Version=$(VERSION) -X github.com/yourusername/gocr/pkg/version.Commit=$(GIT_COMMIT) -X github.com/yourusername/gocr/pkg/version.BuildDate=$(BUILD_DATE)"
+LDFLAGS := -ldflags "-X github.com/yourusername/stroganoff/pkg/version.Version=$(VERSION) -X github.com/yourusername/stroganoff/pkg/version.Commit=$(GIT_COMMIT) -X github.com/yourusername/stroganoff/pkg/version.BuildDate=$(BUILD_DATE)"
 
 # OS and ARCH combinations
 OS_ARCH := linux/amd64 linux/arm64 linux/arm darwin/amd64 darwin/arm64 windows/amd64 windows/arm64
@@ -38,7 +38,7 @@ install-deps:
 
 build: install-deps
 	@echo "Building $(BINARY_NAME) v$(VERSION) for $(GOOS)/$(GOARCH)..."
-	go build $(LDFLAGS) -o $(DIST_DIR)/$(BINARY_NAME) ./cmd/gocr
+	go build $(LDFLAGS) -o $(DIST_DIR)/$(BINARY_NAME) ./cmd/stroganoff
 
 build-all: clean install-deps
 	@echo "Building $(BINARY_NAME) v$(VERSION) for all OS/ARCH combinations..."
@@ -51,7 +51,7 @@ build-all: clean install-deps
 			binary=$(BINARY_NAME).exe; \
 		fi; \
 		echo "Building for $$os/$$arch..."; \
-		GOOS=$$os GOARCH=$$arch go build $(LDFLAGS) -o $(DIST_DIR)/$(BINARY_NAME)-$(VERSION)-$$os-$$arch/$(BINARY_NAME) ./cmd/gocr; \
+		GOOS=$$os GOARCH=$$arch go build $(LDFLAGS) -o $(DIST_DIR)/$(BINARY_NAME)-$(VERSION)-$$os-$$arch/$(BINARY_NAME) ./cmd/stroganoff; \
 		if [ "$$os" = "windows" ]; then \
 			mv $(DIST_DIR)/$(BINARY_NAME)-$(VERSION)-$$os-$$arch/$(BINARY_NAME) $(DIST_DIR)/$(BINARY_NAME)-$(VERSION)-$$os-$$arch/$(BINARY_NAME).exe; \
 		fi; \
@@ -64,7 +64,7 @@ run: build
 
 serve: build
 	@cp config.example.yaml config.yaml 2>/dev/null || true
-	@echo "Starting GOCR server..."
+	@echo "Starting stroganoff server..."
 	@./$(DIST_DIR)/$(BINARY_NAME) serve
 
 test: install-deps

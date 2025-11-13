@@ -1,4 +1,4 @@
-module github.com/yourusername/gocr
+module github.com/yourusername/stroganoff
 
 go 1.21
 
