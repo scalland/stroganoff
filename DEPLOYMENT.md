@@ -1,6 +1,6 @@
-# GOCR Deployment Guide
+# stroganoff Deployment Guide
 
-This guide covers various deployment scenarios for the GOCR application.
+This guide covers various deployment scenarios for the stroganoff application.
 
 ## Standalone Binary Deployment
 
@@ -11,8 +11,8 @@ This guide covers various deployment scenarios for the GOCR application.
 
 ```bash
 # Clone or download the repository
-git clone https://github.com/yourusername/gocr.git
-cd gocr
+git clone https://github.com/yourusername/stroganoff.git
+cd stroganoff
 
 # Build for your platform
 make build
@@ -29,7 +29,7 @@ cp config.example.yaml config.yaml
 # Edit config.yaml as needed
 
 # Run the application
-./dist/gocr web --config config.yaml
+./dist/stroganoff web --config config.yaml
 ```
 
 ## Linux Service Deployment (systemd)
@@ -41,7 +41,7 @@ cp config.example.yaml config.yaml
 make build
 
 # Get the binary path
-BINARY_PATH=$(pwd)/dist/gocr
+BINARY_PATH=$(pwd)/dist/stroganoff
 
 # Install as service
 sudo $BINARY_PATH install
@@ -54,34 +54,34 @@ sudo $BINARY_PATH install --service myapp --user appuser
 
 ```bash
 # Start the service
-sudo systemctl start gocr
+sudo systemctl start stroganoff
 
 # Stop the service
-sudo systemctl stop gocr
+sudo systemctl stop stroganoff
 
 # View logs
-sudo journalctl -u gocr -f
+sudo journalctl -u stroganoff -f
 
 # Enable auto-start
-sudo systemctl enable gocr
+sudo systemctl enable stroganoff
 
 # Disable auto-start
-sudo systemctl disable gocr
+sudo systemctl disable stroganoff
 ```
 
 ### Service Unit File
 
-The install command creates `/etc/systemd/system/gocr.service`:
+The install command creates `/etc/systemd/system/stroganoff.service`:
 
 ```ini
 [Unit]
-Description=GOCR Service
+Description=stroganoff Service
 After=network.target
 
 [Service]
 Type=simple
 User=root
-ExecStart=/path/to/gocr web
+ExecStart=/path/to/stroganoff web
 Restart=on-failure
 RestartSec=10
 
@@ -128,7 +128,7 @@ Open Command Prompt as Administrator:
 
 ```cmd
 # Build the binary
-go build -o gocr.exe ./cmd/gocr
+go build -o gocr.exe ./cmd/stroganoff
 
 # Install as service
 gocr.exe install

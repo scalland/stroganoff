@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"github.com/yourusername/gocr/pkg/version"
+	"github.com/yourusername/stroganoff/pkg/version"
 )
 
 var versionCmd = &cobra.Command{

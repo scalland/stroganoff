@@ -1,15 +1,15 @@
 version: '3.8'
 
 services:
-  gocr:
+  stroganoff:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
     environment:
-      - GOCR_THEME=default
-      - GOCR_LOG_LEVEL=info
+      - STROGANOFF_THEME=default
+      - STROGANOFF_LOG_LEVEL=info
     volumes:
       - ./config.yaml:/app/config.yaml:ro
     restart: unless-stopped

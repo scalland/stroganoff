@@ -1,6 +1,6 @@
-# GOCR - Getting Started Guide
+# stroganoff - Getting Started Guide
 
-Welcome to GOCR! This guide will help you get up and running quickly.
+Welcome to stroganoff! This guide will help you get up and running quickly.
 
 ## Prerequisites
 
@@ -13,8 +13,8 @@ Welcome to GOCR! This guide will help you get up and running quickly.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/gocr.git
-cd gocr
+git clone https://github.com/yourusername/stroganoff.git
+cd stroganoff
 ```
 
 ### 2. Verify Prerequisites
@@ -38,7 +38,7 @@ make install-deps
 make build
 ```
 
-This creates a binary in `dist/gocr` (or `dist/gocr.exe` on Windows).
+This creates a binary in `dist/stroganoff` (or `dist/stroganoff.exe` on Windows).
 
 ### Option 2: Build for All Platforms
 
@@ -57,7 +57,7 @@ This builds for Linux, macOS, and Windows across multiple architectures.
 cp config.example.yaml config.yaml
 
 # Run the web server
-./dist/gocr web
+./dist/stroganoff web
 
 # The server will start on http://localhost:8080
 ```
@@ -66,13 +66,13 @@ cp config.example.yaml config.yaml
 
 ```bash
 # Show version
-./dist/gocr version
+./dist/stroganoff version
 
 # Show help
-./dist/gocr --help
+./dist/stroganoff --help
 
 # Show config
-./dist/gocr config show
+./dist/stroganoff config show
 ```
 
 ## Configuration
@@ -188,7 +188,7 @@ This will prompt you to:
 
 ### 1. Create Command File
 
-Create `cmd/gocr/commands/mycommand.go`:
+Create `cmd/stroganoff/commands/mycommand.go`:
 
 ```go
 package commands
@@ -215,7 +215,7 @@ func init() {
 
 ### 2. Register Command
 
-Edit `cmd/gocr/commands/root.go` and add:
+Edit `cmd/stroganoff/commands/root.go` and add:
 
 ```go
 func init() {
@@ -229,8 +229,8 @@ func init() {
 
 ```bash
 make build
-./dist/gocr mycommand --help
-./dist/gocr mycommand --name "Alice"
+./dist/stroganoff mycommand --help
+./dist/stroganoff mycommand --name "Alice"
 ```
 
 ## Adding a New API Endpoint
@@ -260,7 +260,7 @@ func (s *Server) myEndpointHandler(c *gin.Context) {
 
 ```bash
 make build
-./dist/gocr web &
+./dist/stroganoff web &
 sleep 2
 curl http://localhost:8080/api/myendpoint
 ```
@@ -270,13 +270,13 @@ curl http://localhost:8080/api/myendpoint
 ### Build Docker Image
 
 ```bash
-docker build -t gocr:dev .
+docker build -t stroganoff:dev .
 ```
 
 ### Run in Docker
 
 ```bash
-docker run -p 8080:8080 gocr:dev
+docker run -p 8080:8080 stroganoff:dev
 ```
 
 ### Using Docker Compose
@@ -347,7 +347,7 @@ chmod +x dist/gocr
 ## File Structure Explained
 
 ```
-gocr/
+stroganoff/
 ├── cmd/              # Commands (CLI entry points)
 ├── internal/         # Private packages (not importable)
 │   ├── config/      # Configuration management
@@ -391,7 +391,7 @@ go mod download
 go mod tidy
 
 # Build with custom output
-go build -o myapp ./cmd/gocr
+go build -o myapp ./cmd/stroganoff
 
 # Run specific test
 go test -run TestName ./...
@@ -448,12 +448,12 @@ curl -X POST http://localhost:8080/api/auth/token \
 
 ### Building and Running
 ```bash
-make build && ./dist/gocr version
+make build && ./dist/stroganoff version
 ```
 
 ### Quick Test Loop
 ```bash
-make test && make build && ./dist/gocr web
+make test && make build && ./dist/stroganoff web
 ```
 
 ### Check Everything

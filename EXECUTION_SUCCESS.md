@@ -123,7 +123,7 @@ curl http://localhost:8080/api/heartbeat
 /Users/shammishailaj/dev/gocr/
 ├── dist/
 │   └── gocr                    ✅ Compiled binary
-├── cmd/gocr/
+├── cmd/stroganoff/
 │   ├── main.go                 ✅ Entry point
 │   └── commands/               ✅ 6 command files
 ├── internal/
@@ -338,7 +338,7 @@ curl http://localhost:8080/
 
 ### For Development
 1. Run `make test` to verify all tests
-2. Edit `cmd/gocr/commands/` to add features
+2. Edit `cmd/stroganoff/commands/` to add features
 3. Modify `internal/web/server.go` to add APIs
 4. Customize `web/themes/` for UI changes
 

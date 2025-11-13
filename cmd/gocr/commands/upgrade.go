@@ -10,8 +10,8 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
-	"github.com/yourusername/gocr/internal/upgrade"
-	"github.com/yourusername/gocr/pkg/version"
+	"github.com/yourusername/stroganoff/internal/upgrade"
+	"github.com/yourusername/stroganoff/pkg/version"
 )
 
 var (

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/yourusername/gocr/cmd/gocr/commands"
+	"github.com/yourusername/stroganoff/cmd/stroganoff/commands"
 )
 
 func main() {

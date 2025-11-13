@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"github.com/yourusername/gocr/internal/config"
+	"github.com/yourusername/stroganoff/internal/config"
 )
 
 var configCmd = &cobra.Command{

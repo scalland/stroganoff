@@ -7,7 +7,7 @@ import (
 	"runtime"
 
 	"github.com/spf13/cobra"
-	"github.com/yourusername/gocr/internal/install"
+	"github.com/yourusername/stroganoff/internal/install"
 )
 
 var (

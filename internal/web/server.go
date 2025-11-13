@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yourusername/gocr/internal/config"
-	"github.com/yourusername/gocr/pkg/auth"
-	"github.com/yourusername/gocr/pkg/ratelimit"
+	"github.com/yourusername/stroganoff/internal/config"
+	"github.com/yourusername/stroganoff/pkg/auth"
+	"github.com/yourusername/stroganoff/pkg/ratelimit"
 )
 
 // Server represents the HTTP server

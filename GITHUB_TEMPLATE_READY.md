@@ -56,9 +56,9 @@ Commits:
 ### Step 1: Push to GitHub
 ```bash
 # Create repository on GitHub at:
-# https://github.com/yourusername/gocr
+# https://github.com/yourusername/stroganoff
 
-git remote add origin https://github.com/yourusername/gocr.git
+git remote add origin https://github.com/yourusername/stroganoff.git
 git branch -M main
 git push -u origin main
 ```
@@ -98,7 +98,7 @@ authentication, rate limiting, and comprehensive documentation.
 2. Create a test repository (e.g., `gocr-test`)
 3. Clone it and verify:
    ```bash
-   git clone https://github.com/yourusername/gocr-test.git
+   git clone https://github.com/yourusername/stroganoff-test.git
    cd gocr-test
    make build
    ./dist/gocr version

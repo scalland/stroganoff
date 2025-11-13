@@ -89,7 +89,7 @@ Platform: macOS (darwin/arm64)
 ```
 gocr/
 ├── dist/gocr              # Compiled binary (18MB)
-├── cmd/gocr/              # CLI commands (7 files)
+├── cmd/stroganoff/              # CLI commands (7 files)
 ├── internal/              # Core packages (9 files)
 ├── pkg/                   # Public packages (9 files)
 ├── web/                   # Web assets
@@ -175,7 +175,7 @@ launchctl start gocr       # macOS
    - Add JavaScript functionality
 
 3. **Add New Commands**
-   - Create new file in cmd/gocr/commands/
+   - Create new file in cmd/stroganoff/commands/
    - Implement command logic
    - Register in root.go
 

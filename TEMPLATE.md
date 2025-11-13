@@ -25,7 +25,7 @@ A template repository is a repository that can be used as a base for new project
 
 ### Option 1: Use GitHub's Template Feature (Recommended)
 
-1. Go to the [GOCR repository](https://github.com/yourusername/gocr)
+1. Go to the [GOCR repository](https://github.com/yourusername/stroganoff)
 2. Click the green **"Use this template"** button
 3. Choose a new repository name
 4. Create your new repository
@@ -33,11 +33,11 @@ A template repository is a repository that can be used as a base for new project
 ### Option 2: Clone and Customize
 
 ```bash
-git clone https://github.com/yourusername/gocr.git my-app
+git clone https://github.com/yourusername/stroganoff.git my-app
 cd my-app
 
 # Update module name
-sed -i '' 's/yourusername\/gocr/yourusername\/my-app/g' go.mod cmd/gocr/commands/*.go
+sed -i '' 's/yourusername\/gocr/yourusername\/my-app/g' go.mod cmd/stroganoff/commands/*.go
 
 # Remove template files if desired
 rm TEMPLATE.md template.properties
@@ -72,7 +72,7 @@ git commit -m "Initial project setup"
 ### 1. **Project Name**
 - Update `go.mod` with your module path
 - Update imports throughout the codebase
-- Update command name in `cmd/gocr/main.go`
+- Update command name in `cmd/stroganoff/main.go`
 
 ### 2. **Documentation**
 - Update `README.md` with your project details
@@ -80,7 +80,7 @@ git commit -m "Initial project setup"
 - Update `DEPLOYMENT.md` if needed
 
 ### 3. **Application Logic**
-- Add your commands in `cmd/gocr/commands/`
+- Add your commands in `cmd/stroganoff/commands/`
 - Add API endpoints in `internal/web/server.go`
 - Customize configuration in `internal/config/`
 
@@ -126,7 +126,7 @@ your-app/
 | File | Purpose |
 |------|---------|
 | `go.mod` | Go module definition - **UPDATE THIS FIRST** |
-| `cmd/gocr/commands/*.go` | CLI command implementations |
+| `cmd/stroganoff/commands/*.go` | CLI command implementations |
 | `internal/config/` | Configuration management |
 | `internal/web/server.go` | HTTP API routes and handlers |
 | `Makefile` | Build and development tasks |

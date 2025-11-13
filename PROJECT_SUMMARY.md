@@ -1,6 +1,6 @@
-# GOCR - Project Setup Summary
+# stroganoff - Project Setup Summary
 
-This document summarizes all the components that have been set up for the GOCR professional Go CLI application.
+This document summarizes all the components that have been set up for the stroganoff professional Go CLI application.
 
 ## ✅ Completed Components
 
@@ -8,16 +8,16 @@ This document summarizes all the components that have been set up for the GOCR p
 - ✅ Multi-package layout with cmd/, internal/, pkg/, and web/ directories
 - ✅ Cobra CLI framework with root command
 - ✅ Command structure for: version, web, upgrade, install, config
-- ✅ Modular command files in `cmd/gocr/commands/`
+- ✅ Modular command files in `cmd/stroganoff/commands/`
 
 **Files:**
-- `cmd/gocr/main.go` - Application entry point
-- `cmd/gocr/commands/root.go` - Root command and command registration
-- `cmd/gocr/commands/version.go` - Version display command
-- `cmd/gocr/commands/web.go` - Web server command
-- `cmd/gocr/commands/upgrade.go` - Auto-upgrade command
-- `cmd/gocr/commands/install.go` - Service installation command
-- `cmd/gocr/commands/config.go` - Configuration management command
+- `cmd/stroganoff/main.go` - Application entry point
+- `cmd/stroganoff/commands/root.go` - Root command and command registration
+- `cmd/stroganoff/commands/version.go` - Version display command
+- `cmd/stroganoff/commands/web.go` - Web server command
+- `cmd/stroganoff/commands/upgrade.go` - Auto-upgrade command
+- `cmd/stroganoff/commands/install.go` - Service installation command
+- `cmd/stroganoff/commands/config.go` - Configuration management command
 
 ### 2. **Version Management System**
 - ✅ VERSION file with semantic versioning
@@ -65,11 +65,11 @@ Build Date: 2024-01-01T12:00:00Z
 
 **Command:**
 ```bash
-gocr upgrade [--version VERSION] [--token TOKEN]
+stroganoff upgrade [--version VERSION] [--token TOKEN]
 ```
 
 **Files:**
-- `cmd/gocr/commands/upgrade.go` - Upgrade command implementation
+- `cmd/stroganoff/commands/upgrade.go` - Upgrade command implementation
 - `internal/upgrade/github.go` - GitHub API client
 
 ### 5. **Service Installation Command**
@@ -82,20 +82,20 @@ gocr upgrade [--version VERSION] [--token TOKEN]
 
 **Command:**
 ```bash
-sudo gocr install [--service NAME] [--user USER]
+sudo stroganoff install [--service NAME] [--user USER]
 ```
 
 **Files:**
-- `cmd/gocr/commands/install.go` - Install command
+- `cmd/stroganoff/commands/install.go` - Install command
 - `internal/install/installer.go` - Service interface
 - `internal/install/systemd.go` - Linux systemd
 - `internal/install/launchd.go` - macOS launchd
 - `internal/install/windows.go` - Windows services
 
 **Service Management:**
-- Linux: `sudo systemctl start/stop gocr`
-- macOS: `launchctl start/stop gocr`
-- Windows: `net start/stop gocr`
+- Linux: `sudo systemctl start/stop stroganoff`
+- macOS: `launchctl start/stop stroganoff`
+- Windows: `net start/stop stroganoff`
 
 ### 6. **Gin HTTP Server with Theme Support**
 - ✅ Gin web framework integration
@@ -113,7 +113,7 @@ sudo gocr install [--service NAME] [--user USER]
 
 **Command:**
 ```bash
-gocr web [--host HOST] [--port PORT] [--theme THEME] [--config CONFIG]
+stroganoff web [--host HOST] [--port PORT] [--theme THEME] [--config CONFIG]
 ```
 
 **Files:**
@@ -306,11 +306,11 @@ Push → Build (multi-OS/ARCH) → Test → Coverage → Artifacts → Release
 ## 🏗️ Complete Directory Structure
 
 ```
-gocr/
+stroganoff/
 ├── .github/
 │   └── workflows/
 │       └── build.yml
-├── cmd/gocr/
+├── cmd/stroganoff/
 │   ├── main.go
 │   └── commands/
 │       ├── root.go
@@ -386,7 +386,7 @@ gocr/
 
 ```bash
 # Navigate to project
-cd gocr
+cd stroganoff
 
 # Build for current platform
 make build
@@ -405,7 +405,7 @@ make test
 cp config.example.yaml config.yaml
 
 # Run web server
-./dist/gocr web
+./dist/stroganoff web
 
 # Visit http://localhost:8080
 ```
@@ -417,12 +417,12 @@ cp config.example.yaml config.yaml
 make build
 
 # Install service
-sudo ./dist/gocr install
+sudo ./dist/stroganoff install
 
 # Start service
-sudo systemctl start gocr  # Linux
+sudo systemctl start stroganoff  # Linux
 # or
-launchctl start gocr       # macOS
+launchctl start stroganoff       # macOS
 ```
 
 ## 📋 Key Features Summary

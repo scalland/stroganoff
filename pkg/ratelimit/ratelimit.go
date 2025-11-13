@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yourusername/gocr/internal/config"
+	"github.com/yourusername/stroganoff/internal/config"
 )
 
 // Limiter implements token bucket algorithm for rate limiting

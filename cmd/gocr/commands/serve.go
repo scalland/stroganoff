@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/spf13/cobra"
-	"github.com/yourusername/gocr/internal/config"
-	"github.com/yourusername/gocr/internal/monitor"
-	"github.com/yourusername/gocr/internal/web"
+	"github.com/yourusername/stroganoff/internal/config"
+	"github.com/yourusername/stroganoff/internal/monitor"
+	"github.com/yourusername/stroganoff/internal/web"
 )
 
 var (

@@ -59,7 +59,7 @@ jobs:
           VERSION=$(cat VERSION)
           GIT_COMMIT=$(git rev-parse --short HEAD)
           BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          LDFLAGS="-X github.com/yourusername/gocr/pkg/version.Version=${VERSION} -X github.com/yourusername/gocr/pkg/version.Commit=${GIT_COMMIT} -X github.com/yourusername/gocr/pkg/version.BuildDate=${BUILD_DATE}"
+          LDFLAGS="-X github.com/yourusername/stroganoff/pkg/version.Version=${VERSION} -X github.com/yourusername/stroganoff/pkg/version.Commit=${GIT_COMMIT} -X github.com/yourusername/stroganoff/pkg/version.BuildDate=${BUILD_DATE}"
 
           mkdir -p dist
 

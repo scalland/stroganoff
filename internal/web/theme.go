@@ -24,7 +24,7 @@ func getThemeFile(theme, filename string) ([]byte, error) {
 	defaultHTML := []byte(`<!DOCTYPE html>
 <html>
 <head>
-  <title>GOCR</title>
+  <title>stroganoff</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 40px; }
     .container { max-width: 1200px; margin: 0 auto; }
@@ -42,12 +42,12 @@ func getThemeFile(theme, filename string) ([]byte, error) {
 <body>
   <div class="container">
     <nav class="navbar">
-      <h1>GOCR</h1>
+      <h1>stroganoff</h1>
     </nav>
 
     <main>
       <section class="hero">
-        <h2>Welcome to GOCR</h2>
+        <h2>Welcome to stroganoff</h2>
         <p>A professional Go CLI application with advanced features</p>
       </section>
 
@@ -83,7 +83,7 @@ func getThemeFile(theme, filename string) ([]byte, error) {
     </main>
 
     <footer>
-      <p>&copy; 2024 GOCR. All rights reserved.</p>
+      <p>&copy; 2024 stroganoff. All rights reserved.</p>
     </footer>
   </div>
 </body>

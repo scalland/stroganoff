@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yourusername/gocr/internal/config"
+	"github.com/yourusername/stroganoff/internal/config"
 )
 
 // Token represents an authentication token

@@ -1,4 +1,4 @@
-# GOCR - Professional Go CLI Application
+# stroganoff - Professional Go CLI Application
 
 A comprehensive Go CLI application with advanced features including service installation, configuration management, web interface, API endpoints, monitoring, and automatic updates.
 
@@ -45,16 +45,16 @@ make test-coverage
 
 ```bash
 # Start web server with default configuration
-gocr web
+stroganoff web
 
 # Start with custom host and port
-gocr web --host 0.0.0.0 --port 8080
+stroganoff web --host 0.0.0.0 --port 8080
 
 # Start with dark theme
-gocr web --theme dark
+stroganoff web --theme dark
 
 # Start with custom config file
-gocr web --config /path/to/config.yaml
+stroganoff web --config /path/to/config.yaml
 ```
 
 ### Commands
@@ -80,7 +80,7 @@ Flags:
 #### Upgrade
 Download and install a new version:
 ```bash
-gocr upgrade [--version VERSION] [--token TOKEN]
+stroganoff upgrade [--version VERSION] [--token TOKEN]
 ```
 
 Flags:
@@ -91,13 +91,13 @@ Flags:
 Install as a system service:
 ```bash
 # Linux (requires root)
-sudo gocr install
+sudo stroganoff install
 
 # macOS (requires admin)
-sudo gocr install
+sudo stroganoff install
 
 # Windows (requires admin)
-gocr install
+stroganoff install
 ```
 
 Flags:
@@ -226,7 +226,7 @@ Releases are automatically created via GitHub Actions when pushing to main:
 
 ```
 gocr/
-├── cmd/gocr/
+├── cmd/stroganoff/
 │   ├── main.go
 │   └── commands/
 │       ├── root.go
