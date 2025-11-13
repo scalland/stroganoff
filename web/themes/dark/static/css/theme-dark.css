@@ -1,0 +1,73 @@
+/* Dark Theme */
+
+:root {
+    --primary-color: #4da3ff;
+    --primary-light: #1a2d4d;
+    --primary-dark: #2d6bb3;
+    --secondary-color: #aaa;
+    --bg-color: #1a1a1a;
+    --bg-light: #2d2d2d;
+    --text-color: #e0e0e0;
+    --text-light: #aaa;
+    --border-color: #404040;
+}
+
+.dark-theme {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.dark-theme .navbar {
+    background-color: var(--bg-light);
+    border-bottom-color: var(--border-color);
+}
+
+.dark-theme .navbar-brand h1 {
+    color: var(--primary-color);
+}
+
+.dark-theme .navbar-menu a {
+    color: var(--text-color);
+}
+
+.dark-theme .navbar-menu a:hover {
+    color: var(--primary-color);
+}
+
+.dark-theme section h2,
+.dark-theme section h3 {
+    color: var(--primary-color);
+}
+
+.dark-theme .features li,
+.dark-theme .endpoint {
+    background-color: var(--bg-light);
+    color: var(--text-color);
+}
+
+.dark-theme .endpoint {
+    border-left-color: var(--primary-color);
+}
+
+.dark-theme .endpoint code {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.dark-theme .endpoint p {
+    color: var(--text-light);
+}
+
+.dark-theme .footer {
+    background-color: var(--bg-light);
+    border-top-color: var(--border-color);
+    color: var(--text-light);
+}
+
+.dark-theme .features li {
+    color: var(--text-color);
+}
+
+.dark-theme .hero p {
+    color: var(--text-light);
+}

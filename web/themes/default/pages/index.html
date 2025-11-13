@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOCR - Professional Go Application</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/theme-default.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <h1>GOCR</h1>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#api">API</a></li>
+                <li><a href="#docs">Documentation</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section class="hero">
+                <h2>Welcome to GOCR</h2>
+                <p>A professional Go CLI application with advanced features</p>
+            </section>
+
+            <section id="features" class="features">
+                <h3>Features</h3>
+                <ul>
+                    <li>✓ Multi-OS/Architecture Support</li>
+                    <li>✓ Service Installation & Management</li>
+                    <li>✓ Configuration Management with Hot-Reload</li>
+                    <li>✓ API Authentication & Rate Limiting</li>
+                    <li>✓ Theme Support</li>
+                    <li>✓ Monitoring & Health Checks</li>
+                    <li>✓ Automatic Updates from Github</li>
+                </ul>
+            </section>
+
+            <section id="api" class="api">
+                <h3>API Endpoints</h3>
+                <div class="endpoint">
+                    <code>GET /health</code>
+                    <p>Check application health status</p>
+                </div>
+                <div class="endpoint">
+                    <code>GET /api/heartbeat</code>
+                    <p>Get server heartbeat</p>
+                </div>
+                <div class="endpoint">
+                    <code>GET /api/metrics</code>
+                    <p>Get application metrics (requires auth)</p>
+                </div>
+                <div class="endpoint">
+                    <code>POST /api/auth/token</code>
+                    <p>Create authentication token (requires auth)</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 GOCR. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

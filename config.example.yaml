@@ -1,0 +1,32 @@
+# GOCR Configuration File
+# Copy this to config.yaml and customize for your environment
+
+server:
+  host: "0.0.0.0"
+  port: 8080
+  theme: "default"  # or "dark"
+  tls_cert: ""      # Path to TLS certificate
+  tls_key: ""       # Path to TLS key
+  read_timeout: 30  # Seconds
+  write_timeout: 30 # Seconds
+
+api:
+  rate_limit: 100                    # Requests per window
+  rate_limit_window: 60              # Window in seconds
+  auth_enabled: false                # Enable authentication
+  auth_token_header: "Authorization" # Header name for auth token
+  cors_enabled: true                 # Enable CORS
+  allowed_origins:                   # Allowed origins for CORS
+    - "*"
+
+database:
+  host: "localhost"
+  port: 5432
+  database: "gocr"
+  user: "postgres"
+  password: ""
+
+logging:
+  level: "info"           # debug, info, warn, error
+  format: "json"          # json or text
+  output_path: "stdout"   # stdout, stderr, or file path

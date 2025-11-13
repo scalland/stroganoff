@@ -1,0 +1,59 @@
+/* Default Theme - Light Colors */
+
+:root {
+    --primary-color: #0066cc;
+    --primary-light: #e6f0ff;
+    --primary-dark: #004499;
+    --secondary-color: #666;
+    --bg-color: #ffffff;
+    --bg-light: #f8f9fa;
+    --text-color: #333;
+    --text-light: #666;
+    --border-color: #dee2e6;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.navbar {
+    background-color: var(--bg-light);
+    border-bottom-color: var(--border-color);
+}
+
+.navbar-brand h1 {
+    color: var(--primary-color);
+}
+
+.navbar-menu a {
+    color: var(--text-color);
+}
+
+.navbar-menu a:hover {
+    color: var(--primary-color);
+}
+
+section h2,
+section h3 {
+    color: var(--primary-color);
+}
+
+.features li,
+.endpoint {
+    background-color: var(--bg-light);
+}
+
+.endpoint {
+    border-left-color: var(--primary-color);
+}
+
+.endpoint code {
+    background-color: var(--primary-light);
+}
+
+.footer {
+    background-color: var(--bg-light);
+    border-top-color: var(--border-color);
+    color: var(--text-light);
+}

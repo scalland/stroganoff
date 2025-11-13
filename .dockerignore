@@ -1,0 +1,15 @@
+dist/
+coverage.out
+coverage.html
+.git
+.gitignore
+.github
+.vscode
+.idea
+*.swp
+*.swo
+*.log
+.DS_Store
+vendor/
+tmp/
+temp/

@@ -1,0 +1,133 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [linux, darwin, windows]
+        goarch: [amd64, arm64]
+        exclude:
+          # darwin/arm64 requires special handling
+          - goos: darwin
+            goarch: amd64
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Run tests
+        run: go test -v -race -coverprofile=coverage.out ./...
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.out
+          flags: unittests
+          name: codecov-umbrella
+
+      - name: Build
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+        run: |
+          VERSION=$(cat VERSION)
+          GIT_COMMIT=$(git rev-parse --short HEAD)
+          BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          LDFLAGS="-X github.com/yourusername/gocr/pkg/version.Version=${VERSION} -X github.com/yourusername/gocr/pkg/version.Commit=${GIT_COMMIT} -X github.com/yourusername/gocr/pkg/version.BuildDate=${BUILD_DATE}"
+
+          mkdir -p dist
+
+          if [ "${{ matrix.goos }}" = "windows" ]; then
+            go build -ldflags="$LDFLAGS" -o dist/gocr-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}.exe ./cmd/gocr
+          else
+            go build -ldflags="$LDFLAGS" -o dist/gocr-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }} ./cmd/gocr
+          fi
+
+      - name: Create artifact
+        run: |
+          VERSION=$(cat VERSION)
+          cd dist
+
+          if [ "${{ matrix.goos }}" = "windows" ]; then
+            BINARY="gocr-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}.exe"
+          else
+            BINARY="gocr-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}"
+          fi
+
+          tar czf "gocr-${VERSION}-${{ matrix.goos }}-${{ matrix.goarch }}.tar.gz" "$BINARY"
+          cd ..
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: gocr-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: dist/gocr-*
+          retention-days: 1
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: dist
+
+      - name: Flatten artifacts
+        run: |
+          find dist -mindepth 2 -type f -exec mv {} dist/ \;
+          find dist -mindepth 1 -type d -empty -delete
+
+      - name: Generate release name
+        id: release
+        run: |
+          VERSION=$(cat VERSION)
+          TIMESTAMP=$(date -u +'%Y%m%d_%H%M%S')
+          RELEASE_NAME="Release ${VERSION} (${TIMESTAMP})"
+          echo "name=${RELEASE_NAME}" >> $GITHUB_OUTPUT
+          echo "tag=v${VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.release.outputs.tag }}
+          name: ${{ steps.release.outputs.name }}
+          files: dist/gocr-*
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
