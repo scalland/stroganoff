@@ -1,0 +1,113 @@
+# GitHub Repository Configuration for Template Repository
+# This file documents recommended settings for the template repository
+
+# Repository Settings
+repository:
+  name: gocr
+  description: "🚀 Production-ready Go CLI application template with Cobra, Gin, YAML config, authentication, rate limiting, and comprehensive documentation."
+
+  # GitHub template repository
+  is_template: true
+
+  # Visibility
+  visibility: public
+
+  # Topics for discoverability
+  topics:
+    - go
+    - golang
+    - cli
+    - cobra
+    - gin
+    - template
+    - boilerplate
+    - production-ready
+    - web-server
+    - authentication
+    - rate-limiting
+    - docker
+    - github-actions
+
+  # Repository features
+  features:
+    discussions: true
+    issues: true
+    projects: true
+    wiki: false
+
+# Branch Protection Rules (Optional)
+branch_protection:
+  main:
+    require_pull_request_reviews: false
+    require_status_checks: true
+    require_branches_up_to_date: true
+    dismiss_stale_pr_reviews: false
+    require_code_owner_reviews: false
+    require_signed_commits: false
+
+# Automatically delete head branches on PR merge
+auto_delete_branches: true
+
+# Default branch
+default_branch: main
+
+# Merge strategy
+merge_strategy:
+  allow_merge_commits: true
+  allow_squash_merging: true
+  allow_rebase_merging: true
+  default_merge_method: squash
+
+# Repository Permissions
+permissions:
+  contents: write
+  issues: write
+  pull_requests: write
+  workflows: write
+
+# Code Security & Analysis
+security:
+  enable_vulnerability_alerts: true
+  enable_secret_scanning: true
+  enable_code_scanning: false
+
+# Collaborators (add as needed)
+# collaborators:
+#   - username: maintainer1
+#     permission: admin
+#   - username: maintainer2
+#     permission: maintain
+
+# Labels for Issues/PRs
+labels:
+  - name: bug
+    color: d73a49
+    description: "Something isn't working"
+  - name: enhancement
+    color: a2eeef
+    description: "New feature or request"
+  - name: documentation
+    color: 0075ca
+    description: "Improvements or additions to documentation"
+  - name: good first issue
+    color: 7057ff
+    description: "Good for newcomers"
+  - name: question
+    color: d876e3
+    description: "Further information is requested"
+  - name: template
+    color: fbca04
+    description: "Related to template usage"
+  - name: wontfix
+    color: ffffff
+    description: "This will not be worked on"
+
+# Webhooks (optional)
+# Can be configured in GitHub UI
+
+# Secrets (should be configured in GitHub UI)
+# - GITHUB_TOKEN (automatic)
+# - Custom secrets as needed
+
+# Environment Variables (optional)
+# Can be set per environment
